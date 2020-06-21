@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>EventosApp</title>
+</head>
+
+<body>
+	<h1>Cadastro de Hospedes:</h1>
+	<h3 id="nav-mobile" class="right hide-on-med-and-down">
+		        <a href="/hospedes" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Hospedes</a>
+    </h3>
+	<form class="container" method="post">
+
+		Nome: <input type="text" value="" name="nome"> 
+		Documento: <input type="text" value="" name="documento">
+		Telefone: <input type="text" value="" name="telefone"> 
+
+		<button type="submit" class="waves-effect waves-light btn">Salvar</button>
+
+	</form>
+
+
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+
+</html>
