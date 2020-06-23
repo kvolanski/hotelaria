@@ -16,11 +16,21 @@
 
 <body>
 
-	<h1>Hospede</h1>
-	<h3>
-		<a class="waves-effect waves-light btn" href="/hospedes"><i
-			class="material-icons left">add_circle_outline</i>Lista de hospedes</a>
-	</h3>
+		<header>
+
+
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo">Hospede</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a class="waves-effect waves-light btn" href="/hospedes"><i
+			class="material-icons left">add_circle_outline</i>Lista de hospedes</a></li>
+				</ul>
+			</div>
+		</nav>
+
+	</header>
+
 
 	<div th:each="hospede : ${hospede}" class="container">
 		<div class="row">
@@ -35,9 +45,15 @@
 			</p>
 		</div>
 
+		
 		<form method="post">
-			Data entrada:<input type="date" value="" name="dataEntrada">
-			Data saida:<input type="date" value="" name="dataSaida"> <label>
+			<div class="input-field col s3">
+			Data entrada:<input type="date" value="" name="dataEntrada" required>
+			</div>
+			<div class="input-field col s3">
+			Data saida:<input type="date" value="" name="dataSaida"> 
+			</div>
+			<label>
 				<input type="checkbox" value"1" name="adicionalVeiculo" /> <span>Adicional
 					Veiculo </span>
 			</label>
@@ -70,6 +86,10 @@
 						<span th:text="${checkin.adicionalVeiculo} ? 'Sim' : 'Nao'"></span>
 					</p>
 				</div>
+				
+				<div><a class="waves-effect waves-light btn-small"
+						th:href="${(#mvc.url('HC#deleteCheckin').arg(0, checkin.id)).build()}"><i
+			class="material-icons">delete</i></a></div>
 
 			</div>
 		</div>

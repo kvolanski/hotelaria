@@ -22,11 +22,13 @@ public class Checkin implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Calendar dataEntrada;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Calendar dataSaida;
+	
 	private Boolean adicionalVeiculo = false;
 	
 	@ManyToOne

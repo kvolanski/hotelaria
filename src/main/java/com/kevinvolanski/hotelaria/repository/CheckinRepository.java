@@ -9,4 +9,6 @@ public interface CheckinRepository extends CrudRepository<Checkin, String>{
 
 	Iterable<Checkin>findByHospede(Hospede hospede);
 	
+	Checkin findById(int i);
+	
 }
