@@ -64,11 +64,36 @@ public class HospedeController {
 		mv.addObject("checkins", checkins);		
 		return mv;
 	}
-	
+		
 	@RequestMapping("/deletarHospede")
 	public String deleteHospede(int id) {
 		Hospede hospede = hr.findById(id);
 		hr.delete(hospede);
+		return "redirect:/hospedes";
+	}
+	
+	@RequestMapping("/editHospede")
+	public ModelAndView editHospede(int id) {
+		Hospede hospede = hr.findById(id);
+		ModelAndView mv = new ModelAndView("hospede/editHospede");
+		mv.addObject(hospede);
+		return mv;
+	}
+	
+	@RequestMapping(value="/editHospede",method = RequestMethod.POST)
+	public String formEdit(@Valid Hospede hospede, BindingResult result, RedirectAttributes attributes) {
+		if(result.hasErrors()) {
+			attributes.addFlashAttribute("mensagem", "Verifique os campos!");
+			return "redirect:/editHospede{id}";
+		}
+		
+		Hospede hospedeAntigo = hr.findById(hospede.getId());
+		hospedeAntigo.setNome(hospede.getNome());
+		hospedeAntigo.setDocumento(hospede.getDocumento());
+		hospedeAntigo.setTelefone(hospede.getTelefone());		
+		hr.save(hospedeAntigo);
+		
+		attributes.addFlashAttribute("mensagem", "Hospede editado com sucesso!");
 		return "redirect:/hospedes";
 	}
 	
