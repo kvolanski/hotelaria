@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -54,6 +56,31 @@ public class HospedeController {
 		
 		return mv;
 	}
+	
+	//BUSCAS
+	@PostMapping("**/pesquisaNome")
+	public ModelAndView listByName(@RequestParam("nomePesquisa") String nome) {
+		ModelAndView mv = new ModelAndView("/index");
+		Iterable<Hospede> hospedes = hr.findHospedeByName(nome);
+		mv.addObject("hospedes", hospedes);
+		return mv;
+	}
+	
+	@PostMapping("**/pesquisaTelefone")
+	public ModelAndView listByTelefone(@RequestParam("telefonePesquisa") String telefone) {
+		ModelAndView mv = new ModelAndView("/index");
+		Iterable<Hospede> hospedes = hr.findHospedeByTelefone(telefone);
+		mv.addObject("hospedes", hospedes);
+		return mv;
+	}
+	
+	@PostMapping("**/pesquisaDocumento")
+	public ModelAndView listByDocumento(@RequestParam("documentoPesquisa") String documento) {
+		ModelAndView mv = new ModelAndView("/index");
+		Iterable<Hospede> hospedes = hr.findHospedeByDocumento(documento);
+		mv.addObject("hospedes", hospedes);
+		return mv;
+	}
 
 	@RequestMapping("/{id}")
 	public ModelAndView detalhesHospede(@PathVariable("id") int id) {
@@ -71,6 +98,8 @@ public class HospedeController {
 		hr.delete(hospede);
 		return "redirect:/hospedes";
 	}
+	
+	//EDITAR
 	
 	@RequestMapping("/editHospede")
 	public ModelAndView editHospede(int id) {
@@ -96,6 +125,8 @@ public class HospedeController {
 		attributes.addFlashAttribute("mensagem", "Hospede editado com sucesso!");
 		return "redirect:/hospedes";
 	}
+	
+	//FIM EDITAR
 	
 	@RequestMapping("/deletarCheckin")
 	public String deleteCheckin(int id) {

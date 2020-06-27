@@ -14,12 +14,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 
-<title>EventosApp</title>
+<title>Hotelaria</title>
 </head>
 
 <body>
 
-			<header>
+	<header>
 
 
 		<nav>
@@ -27,25 +27,27 @@
 				<a href="#" class="brand-logo">Editar Hospede</a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a class="waves-effect waves-light btn" href="/hospedes"><i
-			class="material-icons left">dehaze</i>Lista de hospedes</a></li>
+							class="material-icons left">dehaze</i>Lista de hospedes</a></li>
 				</ul>
 			</div>
 		</nav>
 
 	</header>
-<div th:each="hospede : ${hospede}">	
-	<form class="container" method="post">
+	<div th:each="hospede : ${hospede}">
+		<form class="container" method="post">
 
 
-		Nome: <input type="text" th:field="${hospede.nome}" value="" name="nome"> 
-		Documento: <input type="text" th:field="${hospede.documento}" value="" name="documento">
-		Telefone: <input type="text" th:field="${hospede.telefone}" value="" name="telefone"> 
+			Nome: <input type="text" th:field="${hospede.nome}" value=""
+				name="nome"> Documento: <input type="text"
+				th:field="${hospede.documento}" value="" name="documento">
+			Telefone: <input type="text" th:field="${hospede.telefone}" value=""
+				name="telefone">
 
-		<button type="submit" class="waves-effect waves-light btn">Salvar</button>
+			<button type="submit" class="waves-effect waves-light btn">Salvar</button>
 
-	</form>
+		</form>
 	</div>
-	
+
 	<!--JavaScript at end of body for optimized loading-->
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 
